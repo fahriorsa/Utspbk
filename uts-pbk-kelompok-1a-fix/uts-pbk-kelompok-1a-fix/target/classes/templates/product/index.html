@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Produk</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link rel="stylesheet" href="/fa/all.min.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    
+    <!-- (Optional) Use CSS or JS implementation -->
+    <script src="/fa/all.min.js"></script>
+
+</head>
+
+<body>
+    <div th:replace="~{components/components :: navbar}"></div>
+  <main>
+  <div class="container pt-3">
+   
+   
+    <div class="row align-items-center g-2 pb-3">
+        <div class="col align-items-center">
+            <h1>Daftar Produk</h1>
+        </div> 
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col">
+          <div class="table-responsive">
+            <!-- <div class="col">
+                <a name="" id="" class="btn btn-success mb-3" role="button">Tambah Produk</a>
+            </div> -->
+            <table class="table table-hover table-striped table-bordered">
+                <!-- <caption>Daftar Produk</caption> -->
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nama Produk</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col" style="width: 100px;" class="text-center">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each=" item: ${dataProduct}">
+                    <th scope="row" th:text="${item.id}"></th>
+                    <td th:text="${item.nama}"></td>
+                    <td th:text="${item.brand}"></td>
+                    <td th:text="${item.harga}"></td>
+                    <td class="text-center">
+                    <a th:href="@{'/product/edit/'+${item.id}}"><div class="fa fa-edit me-3"></div></a>
+                    <a th:href="@{'/product/hapus/'+${item.id}}"><div class="fa fa-trash-can"></div></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="col">
+                <a class="btn btn-success mb-3" th:href="@{/product/tambah}" role="button">Tambah Produk</a>
+            </div>
+        </div>
+    </div>
+  </div>
+</main>
+  <footer class="text-center">
+    <!-- place footer here -->
+    <div th:replace="components/components.html :: footer"></div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

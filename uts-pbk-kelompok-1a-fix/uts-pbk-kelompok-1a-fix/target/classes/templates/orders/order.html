@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Shopee</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link rel="stylesheet" href="/fa/all.min.css" />
+    <link rel="stylesheet" href="/css/styles.css" />
+    
+    <!-- (Optional) Use CSS or JS implementation -->
+    <script src="/fa/all.min.js"></script>
+
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <div th:replace="components/components.html :: navbar"></div>
+  </header>
+  <main>
+  <div class="container pt-3">
+    <div class="row justify-content-center align-items-baseline">
+        <div class="col-6">
+          <h1>Data Order</h1>
+            <form th:action="@{/orders/simpan}" th:object="${order}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Nama Customer</label>
+                    <input name="customer" th:value="${customer.id}" type="hidden">
+                    <input th:value="${customer.namaLengkap}" type="text" class="form-control" placeholder="nama customer">
+                  </div>
+                <div class="mb-3">
+                    <label class="form-label">Nama Produk</label>
+                    <input name="produk" th:value="${product.id}" type="hidden">
+                    <input th:value="${product.nama}" type="text" class="form-control" placeholder="produk yang diorder">
+                  </div>
+                <div class="mb-3">
+                    <label class="form-label">Jumlah Order</label>
+                    <input name="jumlah" type="text" class="form-control" placeholder="Masukan jumlah order" autofocus autocomplete="off" required>
+                  </div>
+                  <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary me-2">Order</button>
+            </form>
+              
+        </div>
+    </div>
+  </div>
+  </main>
+  <footer class="text-center">
+    <!-- place footer here -->
+    <div th:replace="components/components.html :: footer"></div>
+  </footer>
+    
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!-- navbar -->
+<div th:fragment="navbar">
+<nav class="navbar navbar-expand-sm navbar-dark bg-success mb-3">
+    <div class="container">
+      <a class="navbar-brand" th:href="@{/}">Shopee</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+          <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" th:href="@{/home}" aria-current="page">Home <span class="visually-hidden">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" th:href="@{/product/}">Produk</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori Produk</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownId">
+                      <a class="dropdown-item" th:each=" kategori : ${categoryProduct}" th:href="@{'/category/'+${kategori.id}}" th:text="${kategori.kategori}"></a>
+                      <!-- <a class="dropdown-item" href="#">Action 2</a> -->
+                  </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/orders/cart}">Keranjang</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/customer/profil}">Profil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" th:href="@{/logout}">Logout</a>
+              </li>
+          </ul>
+          <form class="d-flex my-2 my-lg-0">
+              <input class="form-control me-sm-2" type="text" placeholder="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+      </div>
+   </div>
+ </nav>
+</div>
+
+<!-- footer -->
+<div th:fragment="footer">
+    <div class="card bg-success text-light mt-3">
+        <div class="card-header">
+          Shopee
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>UTS PEMROGRAMAN BERBASIS KOMPONEN KELOMPOK 1</p>
+            <p>Universitas Papua, 2023</p>
+          </blockquote>
+        </div>
+      </div>
+</div>

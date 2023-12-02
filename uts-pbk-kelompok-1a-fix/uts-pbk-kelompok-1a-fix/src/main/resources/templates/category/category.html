@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Kategori</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <!-- FontAwesome 6.2.0 CSS -->
+  <link rel="stylesheet" href="/fa/all.min.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  
+  <!-- (Optional) Use CSS or JS implementation -->
+  <script src="/fa/all.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <!-- place navbar here -->
+    <div th:replace="components/components.html :: navbar"></div>
+  </header>
+  <main>
+    <div class="container pt-3">
+      <div class="row align-items-center g-2 pb-3">
+        <div class="col align-items-center">
+            <h1 th:text="'Daftar '+${category.kategori}"></h1>
+        </div>
+    </div>
+      <div class="row row-cols-3">
+        <div class="col mb-3" th:each=" item: ${dataProduct}">
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><h3 th:text="${item.nama}"></h3></td>
+                  </tr>
+                  <tr>
+                    <td><h5 th:text="${item.brand}"></h5></td>
+                  </tr>
+                  <tr>
+                    <td><h5 th:text="'Rp '+${item.harga}"></h5></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a class="btn btn-success" th:href="@{'/product/detail/'+${item.id}}" role="button">Detail Produk</a>
+              <a class="btn btn-success" th:href="@{'/orders/'+${customer.id}+'/'+${item.id}}" role="button">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <a class="btn btn-primary mb-3" th:href="@{/category/tambah}" role="button">Tambah Kategori</a>
+        <a class="btn btn-danger mb-3" th:href="@{'/category/hapus/'+${category.id}}" role="button">Hapus Kategori</a>
+        <a class="btn btn-warning mb-3" th:href="@{'/category/edit/'+${category.id}}" role="button">Edit Kategori</a>
+    </div>
+    </div>
+  </main>
+  <footer class="text-center">
+    <!-- place footer here -->
+    <div th:replace="components/components.html :: footer"></div>
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
